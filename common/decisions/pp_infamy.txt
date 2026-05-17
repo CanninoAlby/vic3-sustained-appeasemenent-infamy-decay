@@ -9,6 +9,7 @@ pp_infamy_decision = {
 	}
 
 	when_taken = {
+		custom_tooltip = pp_infamy_decision_cost_tt
 		trigger_event = { id = pp_infamy_event.1 popup = yes }
 	}
 

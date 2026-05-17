@@ -15,7 +15,7 @@ pp_infamy_event.1 = {
 	
 	option = {	# Tier 1
 		name = pp_infamy.1.n
-		custom_tooltip = pp_infamy.1.tt
+		custom_tooltip = pp_infamy_tier_1_cost_tt
 		trigger = {
 			not = { has_modifier = modifier_positive_propaganda.1 }
 		}
@@ -23,14 +23,14 @@ pp_infamy_event.1 = {
 			name = modifier_positive_propaganda.1
 			years = 1
 		}
-        # Ensure mutually exclusive
-        remove_modifier = modifier_positive_propaganda.2
-        remove_modifier = modifier_positive_propaganda.3
+	# Ensure mutually exclusive
+	remove_modifier = modifier_positive_propaganda.2
+	remove_modifier = modifier_positive_propaganda.3
 	}
-		
+
 	option = {	# Tier 2
 		name = pp_infamy.2.n
-		custom_tooltip = pp_infamy.2.tt
+		custom_tooltip = pp_infamy_tier_2_cost_tt
 		trigger = {
 			not = { has_modifier = modifier_positive_propaganda.2 }
 		}
@@ -38,13 +38,13 @@ pp_infamy_event.1 = {
 			name = modifier_positive_propaganda.2
 			years = 1
 		}
-        remove_modifier = modifier_positive_propaganda.1
-        remove_modifier = modifier_positive_propaganda.3
+	remove_modifier = modifier_positive_propaganda.1
+	remove_modifier = modifier_positive_propaganda.3
 	}
 
 	option = {	# Tier 3
 		name = pp_infamy.3.n
-		custom_tooltip = pp_infamy.3.tt
+		custom_tooltip = pp_infamy_tier_3_cost_tt
 		trigger = {
 			not = { has_modifier = modifier_positive_propaganda.3 }
 		}
@@ -52,7 +52,7 @@ pp_infamy_event.1 = {
 			name = modifier_positive_propaganda.3
 			years = 1
 		}
-        remove_modifier = modifier_positive_propaganda.1
-        remove_modifier = modifier_positive_propaganda.2
+	remove_modifier = modifier_positive_propaganda.1
+	remove_modifier = modifier_positive_propaganda.2
 	}
 }
