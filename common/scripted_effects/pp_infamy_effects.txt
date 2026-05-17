@@ -1,14 +1,9 @@
 pp_calculate_target_gdp = {
-	set_variable = { name = pp_total_target_gdp value = 0 }
-	every_country = {
-		limit = {
-			NOT = { this = root }
-			country_rank >= rank_value:major_power
-		}
-		root = {
-			add_to_variable = { name = pp_total_target_gdp value = prev.gdp }
-		}
-	}
+	# We evaluate the script values directly which handles the GDP calculations natively,
+	# avoiding nested scope errors in scripted effects.
+	set_variable = { name = pp_locked_cost_1 value = pp_cost_tier_1 }
+	set_variable = { name = pp_locked_cost_2 value = pp_cost_tier_2 }
+	set_variable = { name = pp_locked_cost_3 value = pp_cost_tier_3 }
 }
 
 pp_process_weekly_appeasement = {

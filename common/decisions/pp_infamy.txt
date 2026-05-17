@@ -10,6 +10,7 @@ pp_infamy_decision = {
 	}
 
 	when_taken = {
+		pp_calculate_target_gdp = yes
 		trigger_event = { id = pp_infamy_event.1 popup = yes }
 	}
 

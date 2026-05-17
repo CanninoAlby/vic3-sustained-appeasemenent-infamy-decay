@@ -25,7 +25,28 @@ pp_cost_tier_3 = {
 	multiply = 0.006
 }
 
-# Wrapper for the budget modifier multiplier
-pp_locked_cost_value = {
-	value = root.var:pp_locked_weekly_cost
+pp_tier_1_math = {
+	value = root.var:pp_total_target_gdp
+	multiply = 0.001
+}
+
+pp_tier_2_math = {
+	value = root.var:pp_total_target_gdp
+	multiply = 0.003
+}
+
+pp_tier_3_math = {
+	value = root.var:pp_total_target_gdp
+	multiply = 0.006
+}
+
+# Wrappers for the budget modifier multipliers
+pp_locked_val_1 = {
+	value = root.var:pp_locked_cost_1
+}
+pp_locked_val_2 = {
+	value = root.var:pp_locked_cost_2
+}
+pp_locked_val_3 = {
+	value = root.var:pp_locked_cost_3
 }
