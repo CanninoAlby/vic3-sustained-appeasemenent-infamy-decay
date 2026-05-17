@@ -5,12 +5,12 @@ modifier_positive_propaganda.1 = {
 
 modifier_positive_propaganda.2 = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
-	country_infamy_decay_mult = 9.0		# +900% base decay
+	country_infamy_decay_mult = 5.0		# +500% base decay
 }
 
 modifier_positive_propaganda.3 = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
-	country_infamy_decay_mult = 24.0	# +2400% base decay
+	country_infamy_decay_mult = 9.0	# +900% base decay
 }
 
 # Base cost modifier for budget UI
