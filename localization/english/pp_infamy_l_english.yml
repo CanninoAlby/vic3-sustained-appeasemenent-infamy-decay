@@ -21,3 +21,6 @@ modifier_positive_propaganda.3: "A Diplomatic Triumph"
 
 pp_infamy.et: "Revoke the Initiative"
 pp_infamy.et.tt: "Our robust might is more than capable of navigating and amending the negative perceptions cast upon us by the outside world."
+
+ pp_appeasement_pact: "International Appeasement Payments"
+ pp_appeasement_pact_desc: "We are providing sustained financial support to ensure our international interests are viewed favorably."
