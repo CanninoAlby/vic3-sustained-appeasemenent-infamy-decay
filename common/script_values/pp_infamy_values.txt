@@ -1,23 +1,31 @@
-pp_total_target_gdp_calc = {
-	sum_scope_value = {
-        list = every_country
-        limit = {
-            NOT = { this = root }
-            country_rank >= rank_value:major_power
-        }
-        value = gdp
-    }
+# Script values for tooltips
+pp_total_target_gdp = {
+	value = 0
+	every_country = {
+		limit = {
+			NOT = { this = root }
+			country_rank >= rank_value:major_power
+		}
+		add = gdp
+	}
 }
 
 pp_cost_tier_1 = {
-	value = pp_total_target_gdp_calc
+	value = pp_total_target_gdp
 	multiply = 0.001
 }
+
 pp_cost_tier_2 = {
-	value = pp_total_target_gdp_calc
+	value = pp_total_target_gdp
 	multiply = 0.003
 }
+
 pp_cost_tier_3 = {
-	value = pp_total_target_gdp_calc
+	value = pp_total_target_gdp
 	multiply = 0.006
+}
+
+# Wrapper for the budget modifier multiplier
+pp_locked_cost_value = {
+	value = root.var:pp_locked_weekly_cost
 }

@@ -21,7 +21,7 @@ pp_infamy_event.1 = {
 		}
 		
 		# Lock the cost!
-		set_variable = { name = pp_locked_weekly_cost value = pp_total_target_gdp_calc }
+		set_variable = { name = pp_locked_weekly_cost value = pp_total_target_gdp }
 		multiply_variable = { name = pp_locked_weekly_cost value = 0.001 }
 		
 		# Remove old modifiers
@@ -36,7 +36,7 @@ pp_infamy_event.1 = {
 		}
 		add_modifier = {
 			name = modifier_pp_appeasement_expense
-			multiplier = var:pp_locked_weekly_cost
+			multiplier = pp_locked_cost_value
 			years = 1
 		}
 	}
@@ -49,7 +49,7 @@ pp_infamy_event.1 = {
 		}
 		
 		# Lock the cost!
-		set_variable = { name = pp_locked_weekly_cost value = pp_total_target_gdp_calc }
+		set_variable = { name = pp_locked_weekly_cost value = pp_total_target_gdp }
 		multiply_variable = { name = pp_locked_weekly_cost value = 0.003 }
 		
 		remove_modifier = modifier_pp_appeasement_expense
@@ -62,7 +62,7 @@ pp_infamy_event.1 = {
 		}
 		add_modifier = {
 			name = modifier_pp_appeasement_expense
-			multiplier = var:pp_locked_weekly_cost
+			multiplier = pp_locked_cost_value
 			years = 1
 		}
 	}
@@ -75,7 +75,7 @@ pp_infamy_event.1 = {
 		}
 		
 		# Lock the cost!
-		set_variable = { name = pp_locked_weekly_cost value = pp_total_target_gdp_calc }
+		set_variable = { name = pp_locked_weekly_cost value = pp_total_target_gdp }
 		multiply_variable = { name = pp_locked_weekly_cost value = 0.006 }
 		
 		remove_modifier = modifier_pp_appeasement_expense
@@ -88,7 +88,7 @@ pp_infamy_event.1 = {
 		}
 		add_modifier = {
 			name = modifier_pp_appeasement_expense
-			multiplier = var:pp_locked_weekly_cost
+			multiplier = pp_locked_cost_value
 			years = 1
 		}
 	}
