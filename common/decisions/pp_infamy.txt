@@ -1,12 +1,11 @@
-﻿pp_infamy_decision = {
+pp_infamy_decision = {
 	is_shown = {
 		is_player = yes
 		is_ai = no
 	}
 
 	possible = {
-		country_rank >= rank_value:insignificant_power #弱小政权
-		gdp >= 1000000	#gdp大于1m，小于1m的话，支出结算有bug
+        infamy >= 25
 	}
 
 	when_taken = {
