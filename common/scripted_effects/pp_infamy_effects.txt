@@ -1,55 +1,81 @@
 pp_process_weekly_appeasement = {
-    # Determine the multiplier based on active modifier
+    # 1. Update the Rate Variable on Root (Player)
     if = {
         limit = { has_modifier = modifier_positive_propaganda.1 }
-        set_variable = { name = pp_appeasement_rate value = 0.001 } # 0.1%
+        set_variable = { name = pp_appeasement_rate value = 0.001 }
     }
     else_if = {
         limit = { has_modifier = modifier_positive_propaganda.2 }
-        set_variable = { name = pp_appeasement_rate value = 0.003 } # 0.3%
+        set_variable = { name = pp_appeasement_rate value = 0.003 }
     }
     else_if = {
         limit = { has_modifier = modifier_positive_propaganda.3 }
-        set_variable = { name = pp_appeasement_rate value = 0.006 } # 0.6%
+        set_variable = { name = pp_appeasement_rate value = 0.006 }
     }
     else = {
-        # Failsafe if no modifier is active but script runs
         set_variable = { name = pp_appeasement_rate value = 0 }
     }
 
-    # Only proceed if there is a rate set
+    # 2. Manage Pacts
     if = {
         limit = { var:pp_appeasement_rate > 0 }
-        
-        # Scope to all Great and Major powers (excluding self)
         every_country = {
             limit = {
                 NOT = { this = root }
                 country_rank >= rank_value:major_power
             }
-            
-            # Calculate cost for this specific AI
-            set_variable = {
-                name = temp_appeasement_cost
-                value = gdp
-            }
-            multiply_variable = {
-                name = temp_appeasement_cost
-                value = root.var:pp_appeasement_rate
-            }
-
-            # Transfer logic: Subtract from player (root), Add to AI (this)
-            # add_treasury uses negative numbers for subtraction
-            root = {
-                add_treasury = {
-                    value = prev.var:temp_appeasement_cost
-                    multiply = -1
+            # Establish if not exists
+            if = {
+                limit = {
+                    NOT = { 
+                        has_diplomatic_pact = { 
+                            who = root 
+                            type = pp_appeasement_pact 
+                        } 
+                    }
+                }
+                # Player establishes pact with AI so Player is first_country (payer)
+                root = {
+                    establish_diplomatic_pact = { 
+                        type = pp_appeasement_pact 
+                        target = prev 
+                    }
                 }
             }
-            add_treasury = var:temp_appeasement_cost
-            
-            # Cleanup temp var on AI
-            remove_variable = temp_appeasement_cost
+        }
+        # Break pacts with countries that are no longer Major Powers
+        every_country = {
+            limit = {
+                has_diplomatic_pact = { 
+                    who = root 
+                    type = pp_appeasement_pact 
+                }
+                country_rank < rank_value:major_power
+            }
+            # Break pact
+            root = {
+                break_diplomatic_pact = { 
+                    type = pp_appeasement_pact 
+                    target = prev 
+                }
+            }
+        }
+    }
+    else = {
+        # Break all pacts if no tier is active
+        every_country = {
+            limit = {
+                has_diplomatic_pact = { 
+                    who = root 
+                    type = pp_appeasement_pact 
+                }
+            }
+            root = {
+                break_diplomatic_pact = { 
+                    type = pp_appeasement_pact 
+                    target = prev 
+                }
+            }
         }
     }
 }
