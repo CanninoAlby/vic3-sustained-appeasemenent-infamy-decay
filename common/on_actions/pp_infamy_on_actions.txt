@@ -1,0 +1,17 @@
+on_weekly_pulse_country = {
+	events = {
+        # Intentionally left blank, we use effect block
+	}
+    effect = {
+        if = {
+            limit = {
+                OR = {
+                    has_modifier = modifier_positive_propaganda.1
+                    has_modifier = modifier_positive_propaganda.2
+                    has_modifier = modifier_positive_propaganda.3
+                }
+            }
+            pp_process_weekly_appeasement = yes
+        }
+    }
+}
