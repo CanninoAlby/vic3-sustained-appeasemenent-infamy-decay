@@ -1,39 +1,69 @@
 pp_process_weekly_appeasement = {
+	# 1. Determine active tier rate
 	if = {
 		limit = { has_modifier = modifier_positive_propaganda.1 }
-		set_variable = { name = temp_cost value = pp_cost_tier_1 }
 		set_variable = { name = temp_rate value = 0.001 }
 	}
 	else_if = {
 		limit = { has_modifier = modifier_positive_propaganda.2 }
-		set_variable = { name = temp_cost value = pp_cost_tier_2 }
 		set_variable = { name = temp_rate value = 0.003 }
 	}
 	else_if = {
 		limit = { has_modifier = modifier_positive_propaganda.3 }
-		set_variable = { name = temp_cost value = pp_cost_tier_3 }
 		set_variable = { name = temp_rate value = 0.006 }
 	}
+	else = {
+		set_variable = { name = temp_rate value = 0 }
+	}
 	
+	# 2. Process payments if a tier is active
 	if = {
-		limit = { exists = var:temp_cost }
-		# Deduct from Player
-		add_treasury = {
-			value = var:temp_cost
-			multiply = -1
-		}
+		limit = { var:temp_rate > 0 }
 		
-		# Transfer to AIs
+		# Calculate total cost for player UI
+		set_variable = { name = pp_total_weekly_cost value = 0 }
+		
+		# Distribute to AIs and sum total cost
 		every_country = {
 			limit = {
 				NOT = { this = root }
 				country_rank >= rank_value:major_power
 			}
-			# AI receives their share (their_gdp * current_tier_rate)
-			add_treasury = {
-				value = gdp
-				multiply = root.var:temp_rate
+			# Calculate AI share
+			set_variable = { name = ai_share value = gdp }
+			multiply_variable = { name = ai_share value = root.var:temp_rate }
+			
+			# Give money to AI
+			add_treasury = var:ai_share
+			
+			# Add to player's total cost counter
+			root = {
+				add_to_variable = { name = pp_total_weekly_cost value = prev.var:ai_share }
 			}
+			
+			remove_variable = ai_share
+		}
+		
+		# 3. Apply the scaling modifier to the Player for Budget UI
+		# First remove any existing instance of the modifier
+		if = {
+			limit = { has_modifier = modifier_pp_appeasement_expense }
+			remove_modifier = modifier_pp_appeasement_expense
+		}
+		
+		# Apply fresh modifier with multiplier equal to total cost
+		# country_expenses_fixed_cost_add = 1.0 * multiplier
+		add_modifier = {
+			name = modifier_pp_appeasement_expense
+			multiplier = var:pp_total_weekly_cost
+			days = 8 # Lasts just over a week, refreshed by the pulse
+		}
+	}
+	else = {
+		# Cleanup if no tier is active
+		if = {
+			limit = { has_modifier = modifier_pp_appeasement_expense }
+			remove_modifier = modifier_pp_appeasement_expense
 		}
 	}
 }
