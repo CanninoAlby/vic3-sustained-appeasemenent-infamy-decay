@@ -23,3 +23,8 @@ l_english:
 
  pp_appeasement_pact: "International Appeasement Payments"
  pp_appeasement_pact_desc: "We are providing sustained financial support to ensure our international interests are viewed favorably."
+
+ pp_infamy_decision_cost_tt: "Total Weekly Cost: @money![GetPlayer.GetScriptValue('pp_cost_tier_1')|v] - @money![GetPlayer.GetScriptValue('pp_cost_tier_3')|v]\n(Based on total GDP of Great and Major Powers)"
+ pp_infamy_tier_1_cost_tt: "Weekly Cost: @money![GetPlayer.GetScriptValue('pp_cost_tier_1')|v]"
+ pp_infamy_tier_2_cost_tt: "Weekly Cost: @money![GetPlayer.GetScriptValue('pp_cost_tier_2')|v]"
+ pp_infamy_tier_3_cost_tt: "Weekly Cost: @money![GetPlayer.GetScriptValue('pp_cost_tier_3')|v]"
