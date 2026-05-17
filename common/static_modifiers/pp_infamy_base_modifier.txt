@@ -12,3 +12,9 @@ modifier_positive_propaganda.3 = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
 	country_infamy_decay_mult = 24.0	# +2400% base decay
 }
+
+# Base cost modifier for budget UI
+modifier_pp_appeasement_expense = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_negative.dds
+	country_expenses_fixed_cost_add = 1.0 # 1 Pound per multiplier level
+}

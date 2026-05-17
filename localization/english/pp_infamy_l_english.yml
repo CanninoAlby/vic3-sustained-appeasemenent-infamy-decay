@@ -24,3 +24,5 @@ je_appeasement_campaign_desc: "We are currently engaged in a global lobbying eff
 pp_tier_1_active_desc: "We are currently implementing Tier 1: Scholarly Dialogues. This involves funding international academic research and publishing findings that favor our geopolitical positions."
 pp_tier_2_active_desc: "We are currently implementing Tier 2: Media Partnerships. We have established strategic alliances with major global news networks to ensure a more balanced coverage of our national interests."
 pp_tier_3_active_desc: "We are currently implementing Tier 3: Diplomatic Visits. Our highest-level officials are conducting a series of world tours, engaging in direct face-to-face diplomacy to resolve international tensions."
+ pp_appeasement_expense: "International Appeasement Payments"
+ modifier_pp_appeasement_expense: "International Appeasement Payments"
