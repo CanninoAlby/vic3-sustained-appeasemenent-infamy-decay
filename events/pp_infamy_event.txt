@@ -19,27 +19,52 @@ pp_infamy_event.1 = {
 		trigger = {
 			not = { has_modifier = modifier_positive_propaganda.1 }
 		}
+		
+		# Lock the cost!
+		set_variable = { name = pp_locked_weekly_cost value = var:pp_total_target_gdp }
+		multiply_variable = { name = pp_locked_weekly_cost value = 0.001 }
+		
+		# Remove old modifiers
+		remove_modifier = modifier_pp_appeasement_expense
+		remove_modifier = modifier_positive_propaganda.2
+		remove_modifier = modifier_positive_propaganda.3
+		
+		# Add new modifiers
 		add_modifier = {
 			name = modifier_positive_propaganda.1
 			years = 1
 		}
-		# Ensure mutually exclusive
-		remove_modifier = modifier_positive_propaganda.2
-		remove_modifier = modifier_positive_propaganda.3
+		add_modifier = {
+			name = modifier_pp_appeasement_expense
+			multiplier = var:pp_locked_weekly_cost
+			years = 1
+		}
 	}
-
+		
 	option = {	# Tier 2
 		name = pp_infamy.2.n
 		custom_tooltip = pp_infamy_tier_2_cost_tt
 		trigger = {
 			not = { has_modifier = modifier_positive_propaganda.2 }
 		}
+		
+		# Lock the cost!
+		set_variable = { name = pp_locked_weekly_cost value = var:pp_total_target_gdp }
+		multiply_variable = { name = pp_locked_weekly_cost value = 0.003 }
+		
+		remove_modifier = modifier_pp_appeasement_expense
+		remove_modifier = modifier_positive_propaganda.1
+		remove_modifier = modifier_positive_propaganda.3
+		
 		add_modifier = {
 			name = modifier_positive_propaganda.2
 			years = 1
 		}
-		remove_modifier = modifier_positive_propaganda.1
-		remove_modifier = modifier_positive_propaganda.3
+		add_modifier = {
+			name = modifier_pp_appeasement_expense
+			multiplier = var:pp_locked_weekly_cost
+			years = 1
+		}
 	}
 
 	option = {	# Tier 3
@@ -48,17 +73,38 @@ pp_infamy_event.1 = {
 		trigger = {
 			not = { has_modifier = modifier_positive_propaganda.3 }
 		}
+		
+		# Lock the cost!
+		set_variable = { name = pp_locked_weekly_cost value = var:pp_total_target_gdp }
+		multiply_variable = { name = pp_locked_weekly_cost value = 0.006 }
+		
+		remove_modifier = modifier_pp_appeasement_expense
+		remove_modifier = modifier_positive_propaganda.1
+		remove_modifier = modifier_positive_propaganda.2
+		
 		add_modifier = {
 			name = modifier_positive_propaganda.3
 			years = 1
 		}
-		remove_modifier = modifier_positive_propaganda.1
-		remove_modifier = modifier_positive_propaganda.2
+		add_modifier = {
+			name = modifier_pp_appeasement_expense
+			multiplier = var:pp_locked_weekly_cost
+			years = 1
+		}
 	}
 	
-	option = {	# Revoke
+	option = {
 		name = pp_infamy.et
 		custom_tooltip = pp_infamy.et.tt
+		# Only show if a tier is active
+		trigger = {
+			OR = {
+				has_modifier = modifier_positive_propaganda.1
+				has_modifier = modifier_positive_propaganda.2
+				has_modifier = modifier_positive_propaganda.3
+			}
+		}
+		remove_modifier = modifier_pp_appeasement_expense
 		remove_modifier = modifier_positive_propaganda.1
 		remove_modifier = modifier_positive_propaganda.2
 		remove_modifier = modifier_positive_propaganda.3

@@ -12,7 +12,9 @@ pp_calculate_target_gdp = {
 }
 
 pp_process_weekly_appeasement = {
-	# 1. Determine active tier rate
+	# We only need to distribute money to the AI.
+	# The Player's expense is handled automatically by the modifier_pp_appeasement_expense!
+	
 	if = {
 		limit = { has_modifier = modifier_positive_propaganda.1 }
 		set_variable = { name = temp_rate value = 0.001 }
@@ -29,47 +31,18 @@ pp_process_weekly_appeasement = {
 		set_variable = { name = temp_rate value = 0 }
 	}
 	
-	# 2. Process payments if a tier is active
 	if = {
 		limit = { var:temp_rate > 0 }
-		
-		# Calculate total cost for player UI
-		set_variable = { name = pp_total_weekly_cost value = var:pp_total_target_gdp }
-		multiply_variable = { name = pp_total_weekly_cost value = var:temp_rate }
-		
-		# Distribute to AIs and sum total cost
 		every_country = {
 			limit = {
 				NOT = { this = root }
 				country_rank >= rank_value:major_power
 			}
-			# Calculate AI share
-			set_variable = { name = ai_share value = gdp }
-			multiply_variable = { name = ai_share value = root.var:temp_rate }
-			
-			# Give money to AI
-			add_treasury = var:ai_share
-			
-			remove_variable = ai_share
-		}
-		
-		# 3. Apply the scaling modifier to the Player for Budget UI
-		if = {
-			limit = { has_modifier = modifier_pp_appeasement_expense }
-			remove_modifier = modifier_pp_appeasement_expense
-		}
-		
-		add_modifier = {
-			name = modifier_pp_appeasement_expense
-			multiplier = var:pp_total_weekly_cost
-			days = 8 # Lasts just over a week, refreshed by the pulse
-		}
-	}
-	else = {
-		# Cleanup if no tier is active
-		if = {
-			limit = { has_modifier = modifier_pp_appeasement_expense }
-			remove_modifier = modifier_pp_appeasement_expense
+			# Give money to AI based on their GDP and the active rate
+			add_treasury = {
+				value = gdp
+				multiply = root.var:temp_rate
+			}
 		}
 	}
 }
