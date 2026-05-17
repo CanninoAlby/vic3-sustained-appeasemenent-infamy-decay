@@ -1,0 +1,17 @@
+pp_appeasement_pact = {
+	is_read_only = yes # Cannot be broken manually in the diplo screen
+	is_subsidies = yes # Marks it as an expense in the budget
+	
+	selectable_in_diplomatic_panel = no
+	
+	cost = {
+		value = second_country.gdp
+		multiply = root.var:pp_appeasement_rate
+	}
+
+    # The AI receives what the player pays
+    income = {
+        value = root.gdp
+        multiply = root.var:pp_appeasement_rate
+    }
+}
