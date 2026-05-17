@@ -1,12 +1,23 @@
+pp_total_target_gdp_calc = {
+	sum_scope_value = {
+        list = every_country
+        limit = {
+            NOT = { this = root }
+            country_rank >= rank_value:major_power
+        }
+        value = gdp
+    }
+}
+
 pp_cost_tier_1 = {
-	value = root.var:pp_total_target_gdp
+	value = pp_total_target_gdp_calc
 	multiply = 0.001
 }
 pp_cost_tier_2 = {
-	value = root.var:pp_total_target_gdp
+	value = pp_total_target_gdp_calc
 	multiply = 0.003
 }
 pp_cost_tier_3 = {
-	value = root.var:pp_total_target_gdp
+	value = pp_total_target_gdp_calc
 	multiply = 0.006
 }
