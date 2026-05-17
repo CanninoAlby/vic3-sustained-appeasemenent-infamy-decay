@@ -1,20 +1,20 @@
-l_english:
+﻿l_english:
  pp_infamy_decision: "Crafting a Positive National Image"
  pp_infamy_decision_desc: "Public diplomacy has always been one of our focal points."
 
  pp_infamy.0.t: "A More Benevolent Image"
  pp_infamy.0.d: "Amidst the tangled web of international relations, it's time to elevate our outreach, deepen our engagement, and amplify our efforts to clarify the misconceptions about our recent military maneuvers."
- pp_infamy.0.f: ""While our special military operations have been frequent in recent years, one cannot help but feel a tug at the heartstrings when gazing upon the struggling masses still mired in hardship. This is the path to redemption, a humanitarian endeavor that resonates with our soul.""
+ pp_infamy.0.f: "\"While our special military operations have been frequent in recent years, one cannot help but feel a tug at the heartstrings when gazing upon the struggling masses still mired in hardship. This is the path to redemption, a humanitarian endeavor that resonates with our soul.\""
 
- pp_infamy.1.n: "Initiating International Scholarly Dialogues"
+ pp_infamy.1.n: "Scholarly Dialogues (@money![GetPlayer.GetScriptValue('pp_cost_tier_1')|0v]/w)"
  pp_infamy.1.tt: "Academics worldwide see our recent actions as aligning with the global tide of progress."
  modifier_positive_propaganda.1: "Cutting-Edge Research Findings"
 
- pp_infamy.2.n: "Establishing Enduring International Media Partnerships"
+ pp_infamy.2.n: "Media Partnerships (@money![GetPlayer.GetScriptValue('pp_cost_tier_2')|0v]/w)"
  pp_infamy.2.tt: "A chorus of media outlets across the globe are willing to lend their voices to our cause."
  modifier_positive_propaganda.2: "Enhancing Our Global Reputation"
 
- pp_infamy.3.n: "Dispatching High-Ranking Officials for Diplomatic Visits"
+ pp_infamy.3.n: "Diplomatic Visits (@money![GetPlayer.GetScriptValue('pp_cost_tier_3')|0v]/w)"
  pp_infamy.3.tt: "The necessity for peaceful coexistence between nations has never been more critical."
  modifier_positive_propaganda.3: "A Diplomatic Triumph"
 
@@ -24,7 +24,7 @@ l_english:
  pp_appeasement_pact: "International Appeasement Payments"
  pp_appeasement_pact_desc: "We are providing sustained financial support to ensure our international interests are viewed favorably."
 
- pp_infamy_decision_cost_tt: "Total Weekly Cost: @money![GetPlayer.GetScriptValue('pp_cost_tier_1')|v] - @money![GetPlayer.GetScriptValue('pp_cost_tier_3')|v]\n(Based on total GDP of Great and Major Powers)"
- pp_infamy_tier_1_cost_tt: "Weekly Cost: @money![GetPlayer.GetScriptValue('pp_cost_tier_1')|v]"
- pp_infamy_tier_2_cost_tt: "Weekly Cost: @money![GetPlayer.GetScriptValue('pp_cost_tier_2')|v]"
- pp_infamy_tier_3_cost_tt: "Weekly Cost: @money![GetPlayer.GetScriptValue('pp_cost_tier_3')|v]"
+ pp_infamy_decision_cost_tt: "Total Weekly Cost: @money![GetPlayer.GetScriptValue('pp_cost_tier_1')|0v] - @money![GetPlayer.GetScriptValue('pp_cost_tier_3')|0v]\n(Based on total GDP of Great and Major Powers)"
+ pp_infamy_tier_1_cost_tt: "Weekly Cost: @money![GetPlayer.GetScriptValue('pp_cost_tier_1')|0v]"
+ pp_infamy_tier_2_cost_tt: "Weekly Cost: @money![GetPlayer.GetScriptValue('pp_cost_tier_2')|0v]"
+ pp_infamy_tier_3_cost_tt: "Weekly Cost: @money![GetPlayer.GetScriptValue('pp_cost_tier_3')|0v]"

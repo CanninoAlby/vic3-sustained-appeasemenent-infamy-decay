@@ -1,81 +1,14 @@
 pp_process_weekly_appeasement = {
-    # 1. Update the Rate Variable on Root (Player)
     if = {
         limit = { has_modifier = modifier_positive_propaganda.1 }
-        set_variable = { name = pp_appeasement_rate value = 0.001 }
+        add_government_expenses = { value = pp_cost_tier_1 label = "pp_appeasement_pact" }
     }
     else_if = {
         limit = { has_modifier = modifier_positive_propaganda.2 }
-        set_variable = { name = pp_appeasement_rate value = 0.003 }
+        add_government_expenses = { value = pp_cost_tier_2 label = "pp_appeasement_pact" }
     }
     else_if = {
         limit = { has_modifier = modifier_positive_propaganda.3 }
-        set_variable = { name = pp_appeasement_rate value = 0.006 }
-    }
-    else = {
-        set_variable = { name = pp_appeasement_rate value = 0 }
-    }
-
-    # 2. Manage Pacts
-    if = {
-        limit = { var:pp_appeasement_rate > 0 }
-        every_country = {
-            limit = {
-                NOT = { this = root }
-                country_rank >= rank_value:major_power
-            }
-            # Establish if not exists
-            if = {
-                limit = {
-                    NOT = { 
-                        has_diplomatic_pact = { 
-                            who = root 
-                            type = pp_appeasement_pact 
-                        } 
-                    }
-                }
-                # Player establishes pact with AI so Player is first_country (payer)
-                root = {
-                    establish_diplomatic_pact = { 
-                        type = pp_appeasement_pact 
-                        target = prev 
-                    }
-                }
-            }
-        }
-        # Break pacts with countries that are no longer Major Powers
-        every_country = {
-            limit = {
-                has_diplomatic_pact = { 
-                    who = root 
-                    type = pp_appeasement_pact 
-                }
-                country_rank < rank_value:major_power
-            }
-            # Break pact
-            root = {
-                break_diplomatic_pact = { 
-                    type = pp_appeasement_pact 
-                    target = prev 
-                }
-            }
-        }
-    }
-    else = {
-        # Break all pacts if no tier is active
-        every_country = {
-            limit = {
-                has_diplomatic_pact = { 
-                    who = root 
-                    type = pp_appeasement_pact 
-                }
-            }
-            root = {
-                break_diplomatic_pact = { 
-                    type = pp_appeasement_pact 
-                    target = prev 
-                }
-            }
-        }
+        add_government_expenses = { value = pp_cost_tier_3 label = "pp_appeasement_pact" }
     }
 }

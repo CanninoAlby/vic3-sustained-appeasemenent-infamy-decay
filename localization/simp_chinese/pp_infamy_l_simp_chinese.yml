@@ -1,24 +1,30 @@
 ﻿l_simp_chinese:
+ pp_infamy_decision: "塑造良好的国家形象"
+ pp_infamy_decision_desc: "对外宣传一直是我们的工作重心之一"
 
-pp_infamy_decision: "塑造良好的国家形象"
-pp_infamy_decision_desc: "对外宣传一直是我们的工作重心之一"
+ pp_infamy.0.t: "更友善的形象"
+ pp_infamy.0.d: "在当前复杂的国际形势下，我们有必要进一步提升对外活动的广度、深度和力度，纠正世界各国对我国近期采取的特别军事行动的误解。"
+ pp_infamy.0.f: "“尽管近几年来我们采取的特别军事行动过于频繁，但当你将目光投向那些至今仍生活在水深火热中的穷苦百姓时，心中同样会充满不忍。这是实现人道主义救赎的唯一方式。”"
 
-pp_infamy.0.t: "更友善的形象"
-pp_infamy.0.d: "在当前复杂的国际形势下，我们有必要进一步提升对外活动的广度、深度和力度，纠正世界各国对我国近期采取的特别军事行动的误解。"
-pp_infamy.0.f: " “尽管近几年来我们采取的特别军事行动过于频繁，但当你将目光投向那些至今仍生活在水深火热中的穷苦百姓时，心中同样会充满不忍。这是实现人道主义救赎的唯一方式。” "
+ pp_infamy.1.n: "举行国际学术交流活动 (@money![GetPlayer.GetScriptValue('pp_cost_tier_1')|0v]/周)"
+ pp_infamy.1.tt: "学者们认为我国近期的特别行动符合世界发展趋势。"
+ modifier_positive_propaganda.1: "最新研究成果"
 
-pp_infamy.1.n: "举行国际学术交流活动"
-pp_infamy.1.tt: "学者们认为我国近期的特别行动符合世界发展趋势。"
-modifier_positive_propaganda.1: "最新研究成果"
+ pp_infamy.2.n: "与海外媒体建立长期的稳定合作 (@money![GetPlayer.GetScriptValue('pp_cost_tier_2')|0v]/周)"
+ pp_infamy.2.tt: "世界各国有不少新闻媒体愿意加入我们的事业。"
+ modifier_positive_propaganda.2: "良好的国际形象"
 
-pp_infamy.2.n: "与海外媒体建立长期的稳定合作"
-pp_infamy.2.tt: "世界各国有不少新闻媒体愿意加入我们的事业。"
-modifier_positive_propaganda.2: "良好的国际形象"
+ pp_infamy.3.n: "派遣高级官员出访邻国 (@money![GetPlayer.GetScriptValue('pp_cost_tier_3')|0v]/周)"
+ pp_infamy.3.tt: "两国的和平共处比以往任何时候都更加必要。"
+ modifier_positive_propaganda.3: "外交胜利"
 
-pp_infamy.3.n: "派遣高级官员出访邻国"
-pp_infamy.3.tt: "两国的和平共处比以往任何时候都更加必要。"
-modifier_positive_propaganda.3: "外交胜利"
+ pp_infamy.et: "此事有待商酌"
+ pp_infamy.et.tt: "我们实力雄厚，足以应对并改善外界对我们的负面看法"
 
-pp_infamy.et: "此事有待商酌"
-pp_infamy.et.tt: "我们实力雄厚，足以应对并改善外界对我们的负面看法"
+ pp_appeasement_pact: "国际绥靖支出"
+ pp_appeasement_pact_desc: "我们正在提供持续的财政支持，以确保我们的国际利益得到有利的对待。"
 
+ pp_infamy_decision_cost_tt: "总每周成本: @money![GetPlayer.GetScriptValue('pp_cost_tier_1')|0v] - @money![GetPlayer.GetScriptValue('pp_cost_tier_3')|0v]\n(基于列强和主要国家的总GDP)"
+ pp_infamy_tier_1_cost_tt: "每周成本: @money![GetPlayer.GetScriptValue('pp_cost_tier_1')|0v]"
+ pp_infamy_tier_2_cost_tt: "每周成本: @money![GetPlayer.GetScriptValue('pp_cost_tier_2')|0v]"
+ pp_infamy_tier_3_cost_tt: "每周成本: @money![GetPlayer.GetScriptValue('pp_cost_tier_3')|0v]"
