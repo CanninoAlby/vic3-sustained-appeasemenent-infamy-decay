@@ -6,7 +6,7 @@ pp_infamy_event.1 = {
 	desc = pp_infamy.0.d
 	flavor = pp_infamy.0.f
 	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
-	duration = 3
+	duration = 0
 	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
 	
 	event_image = {
