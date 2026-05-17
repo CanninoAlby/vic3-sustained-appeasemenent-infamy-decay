@@ -1,8 +1,9 @@
 on_weekly_pulse_country = {
-	events = {
-        # Intentionally left blank, we use effect block
-	}
     effect = {
+        if = {
+            limit = { is_player = yes }
+            pp_calculate_target_gdp = yes
+        }
         if = {
             limit = {
                 OR = {

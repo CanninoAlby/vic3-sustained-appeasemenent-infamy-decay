@@ -1,3 +1,16 @@
+pp_calculate_target_gdp = {
+	set_variable = { name = pp_total_target_gdp value = 0 }
+	every_country = {
+		limit = {
+			NOT = { this = root }
+			country_rank >= rank_value:major_power
+		}
+		root = {
+			add_to_variable = { name = pp_total_target_gdp value = prev.gdp }
+		}
+	}
+}
+
 pp_process_weekly_appeasement = {
 	# 1. Determine active tier rate
 	if = {
@@ -21,7 +34,8 @@ pp_process_weekly_appeasement = {
 		limit = { var:temp_rate > 0 }
 		
 		# Calculate total cost for player UI
-		set_variable = { name = pp_total_weekly_cost value = 0 }
+		set_variable = { name = pp_total_weekly_cost value = var:pp_total_target_gdp }
+		multiply_variable = { name = pp_total_weekly_cost value = var:temp_rate }
 		
 		# Distribute to AIs and sum total cost
 		every_country = {
@@ -36,23 +50,15 @@ pp_process_weekly_appeasement = {
 			# Give money to AI
 			add_treasury = var:ai_share
 			
-			# Add to player's total cost counter
-			root = {
-				add_to_variable = { name = pp_total_weekly_cost value = prev.var:ai_share }
-			}
-			
 			remove_variable = ai_share
 		}
 		
 		# 3. Apply the scaling modifier to the Player for Budget UI
-		# First remove any existing instance of the modifier
 		if = {
 			limit = { has_modifier = modifier_pp_appeasement_expense }
 			remove_modifier = modifier_pp_appeasement_expense
 		}
 		
-		# Apply fresh modifier with multiplier equal to total cost
-		# country_expenses_fixed_cost_add = 1.0 * multiplier
 		add_modifier = {
 			name = modifier_pp_appeasement_expense
 			multiplier = var:pp_total_weekly_cost
