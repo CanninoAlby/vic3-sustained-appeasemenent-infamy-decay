@@ -1,0 +1,341 @@
+﻿pp_infamy_gdp_one_per = {	
+	subtract = {
+		value = root.gdp
+		multiply = 0.01		#1%
+	}
+	subtract = {
+		value = root.infamy
+		multiply = 0.001
+	}
+	max = {
+        value = root.gdp
+        multiply = 0.04		#gdp的4%
+    }
+}
+
+pp_infamy_gdp_two_per = {	
+	subtract = {
+		value = root.gdp
+		multiply = 0.02		#2%
+	}
+	subtract = {
+		value = root.infamy
+		multiply = 0.002
+	}
+	max = {
+        value = root.gdp
+        multiply = 0.06 		#gdp的6%
+    }
+}
+
+pp_infamy_gdp_three_per = {
+	subtract = {
+		value = root.gdp
+		multiply = 0.03		#3%
+	}
+	subtract = {
+		value = root.infamy
+		multiply = 0.003
+	}
+	max = {
+        value = root.gdp
+        multiply = 0.08 		#gdp的8%
+    }
+}
+
+pp_infamy_change_a = { 
+	subtract = {
+		if = {	
+			limit =	{
+				infamy < 25 
+			}
+			value = 10
+		}
+		if = {	
+			limit =	{ 
+				infamy < 50
+				infamy >= 25
+			}
+			value = 15
+		}
+		if = {	
+			limit =	{
+				infamy < 100
+				infamy >= 50
+			}
+			value = 20
+		}
+		if = {	
+			limit =	{
+				infamy < 10000
+				infamy >= 100
+			}
+			value = 30
+		}
+	}
+		subtract = {
+		if = {	
+			limit =	{
+				country_rank >= rank_value:great_power 
+			}
+			value = 1.5
+		}
+		if = {	
+			limit =	{
+				country_rank = rank_value:major_power 
+			}
+			value = 1
+		}
+		if = {	
+			limit =	{
+				country_rank <= rank_value:major_power 
+			}
+			value = 0.5
+		}
+	}
+	subtract = {
+		if = {	
+			limit =	{
+				prestige > 5000
+			}
+			value = 2
+		}
+		if = {	
+			limit =	{
+				prestige <= 5000
+				prestige > 3000
+			}
+			value = 1.5
+		}
+		if = {	
+			limit =	{
+				prestige <= 3000
+				prestige > 1000
+			}
+			value = 1
+		}
+	}
+	subtract = {
+		if = {	
+			limit =	{
+				has_technology_researched = mass_propaganda
+			}
+			value = 0.5
+		}
+	}
+	subtract = {
+		if = {	
+			limit =	{
+				has_technology_researched = multilateral_alliances
+			}
+			value = 0.5
+		}
+	}
+	subtract = {
+		if = {	
+			limit =	{
+				has_technology_researched = civilizing_mission
+			}
+			value = 0.5
+		}
+	}	
+}
+
+pp_infamy_change_b = { 
+	subtract = {
+		if = {	
+			limit =	{
+				infamy < 25 
+			}
+			value = 30
+		}
+		if = {	
+			limit =	{ 
+				infamy < 50
+				infamy >= 25
+			}
+			value = 35
+		}
+		if = {	
+			limit =	{
+				infamy < 100
+				infamy >= 50
+			}
+			value = 40
+		}
+		if = {	
+			limit =	{
+				infamy < 10000
+				infamy >= 100
+			}
+			value = 50	
+		}
+	}
+	subtract = {
+		if = {	
+			limit =	{
+				country_rank >= rank_value:great_power 
+			}
+			value = 1.5
+		}
+		if = {	
+			limit =	{
+				country_rank = rank_value:major_power 
+			}
+			value = 1
+		}
+		if = {	
+			limit =	{
+				country_rank <= rank_value:major_power 
+			}
+			value = 0.5
+		}
+	}
+	subtract = {
+		if = {	
+			limit =	{
+				prestige > 5000
+			}
+			value = 2
+		}
+		if = {	
+			limit =	{
+				prestige <= 5000
+				prestige > 3000
+			}
+			value = 1.5
+		}
+		if = {	
+			limit =	{
+				prestige <= 3000
+				prestige > 1000
+			}
+			value = 1
+		}
+	}
+	subtract = {
+		if = {	
+			limit =	{
+				has_technology_researched = mass_propaganda
+			}
+			value = 0.5
+		}
+	}
+	subtract = {
+		if = {	
+			limit =	{
+				has_technology_researched = multilateral_alliances
+			}
+			value = 0.5
+		}
+	}
+	subtract = {
+		if = {	
+			limit =	{
+				has_technology_researched = civilizing_mission
+			}
+			value = 0.5
+		}
+	}	
+}
+
+pp_infamy_change_c = { 
+	subtract = {
+		if = {	
+			limit =	{
+				infamy < 25 
+			}
+			value = 50
+		}
+		if = {	
+			limit =	{ 
+				infamy < 50
+				infamy >= 25
+			}
+			value = 55
+		}
+		if = {	
+			limit =	{
+				infamy < 100
+				infamy >= 50
+			}
+			value = 60
+		}
+		if = {	
+			limit =	{
+				infamy < 10000
+				infamy >= 100
+			}
+			value = 70	
+		}
+	}
+	subtract = {
+		if = {	
+			limit =	{
+				country_rank >= rank_value:great_power 
+			}
+			value = 1.5
+		}
+		if = {	
+			limit =	{
+				country_rank = rank_value:major_power 
+			}
+			value = 1
+		}
+		if = {	
+			limit =	{
+				country_rank <= rank_value:major_power 
+			}
+			value = 0.5
+		}
+	}
+	subtract = {
+		if = {	
+			limit =	{
+				prestige > 5000
+			}
+			value = 2
+		}
+		if = {	
+			limit =	{
+				prestige <= 5000
+				prestige > 3000
+			}
+			value = 1.5
+		}
+		if = {	
+			limit =	{
+				prestige <= 3000
+				prestige > 1000
+			}
+			value = 1
+		}
+	}
+	subtract = {
+		if = {	
+			limit =	{
+				has_technology_researched = mass_propaganda
+			}
+			value = 0.5
+		}
+	}
+	subtract = {
+		if = {	
+			limit =	{
+				has_technology_researched = multilateral_alliances
+			}
+			value = 0.5
+		}
+	}
+	subtract = {
+		if = {	
+			limit =	{
+				has_technology_researched = civilizing_mission
+			}
+			value = 0.5
+		}
+	}	
+}
+
+
+

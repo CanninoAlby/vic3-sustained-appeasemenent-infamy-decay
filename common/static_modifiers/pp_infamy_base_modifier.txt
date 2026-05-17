@@ -1,0 +1,22 @@
+modifier_positive_propaganda.1 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
+	country_diplomatic_play_maneuvers_add = 20	#外交行动博弈力
+	country_infamy_generation_mult = -0.2	#恶名产生
+	country_infamy_decay_mult = 0.3		#恶名衰减
+}
+
+modifier_positive_propaganda.2 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
+	country_influence_add = 200	
+	country_infamy_decay_mult = 0.4	
+	country_radicals_from_conquest_mult = -0.3	#征服导致的激进派
+}
+
+modifier_positive_propaganda.3 = {
+	icon = gfx/interface/icons/timed_modifier_icons/modifier_documents_positive.dds
+	country_authority_add = 200	
+	country_prestige_add = 100	#威望
+	country_infamy_decay_mult = 0.5
+}
+
+#主要效果还是减恶名，修正是附带的ouo！

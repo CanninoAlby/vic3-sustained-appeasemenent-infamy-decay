@@ -1,0 +1,342 @@
+﻿namespace = pp_infamy_event
+
+pp_infamy_event.1 = {
+
+	type = country_event
+
+	title = pp_infamy.0.t	
+	desc = pp_infamy.0.d
+	flavor = pp_infamy.0.f
+	icon = "gfx/interface/icons/event_icons/event_newspaper.dds"
+
+	duration = 3
+
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	
+	event_image = {
+		video = "unspecific_signed_contract"
+	}
+	
+	immediate = {	#判定
+		random_country = {	#同盟
+			limit = { 
+				not = { this = root }
+				has_diplomatic_pact = { who = root type = alliance }	
+			}
+			save_scope_as = pp_alliance_country
+		}
+		random_country = {	#共同防御
+			limit = { 
+				not = { this = root }
+				has_diplomatic_pact = { who = root type = defensive_pact }	
+			}
+			save_scope_as = pp_defensive_pact_country
+		}
+		random_country = {	#和善
+			limit = {
+				not = { this = root }
+				not = { has_diplomatic_pact = { who = root type = alliance } }
+				not = { has_diplomatic_pact = { who = root type = defensive_pact } }
+				has_attitude = { who = root attitude = genial }
+				is_subject = no
+				country_rank >= rank_value:minor_power
+			}
+			save_scope_as = pp_genial_country
+		}
+		random_country = {	#合作
+			limit = {
+				not = { this = root }
+				has_attitude = { who = root attitude = cooperative }	
+				is_subject = no
+				country_rank >= rank_value:minor_power
+			}
+			save_scope_as = pp_cooperative_country
+		}
+		random_country = {	#保护
+			limit = {
+				not = { this = root }
+				has_attitude = { who = root attitude = protective }	
+				is_subject = no
+				country_rank >= rank_value:minor_power
+			}
+			save_scope_as = pp_protective_country
+		}
+		random_country = {	#忠诚
+			limit = {
+				not = { this = root }
+				has_attitude = { who = root attitude = loyal }	
+			}
+			save_scope_as = pp_loyal_country
+		}
+		random_country = {	#和解
+			limit = {
+				not = { this = root }
+				has_attitude = { who = root attitude = conciliatory }	
+				is_subject = no
+				country_rank >= rank_value:minor_power
+			}
+			save_scope_as = pp_conciliator_country
+		}
+		random_country = {	#谨慎
+			limit = {
+				not = { this = root }
+				has_attitude = { who = root attitude = cautious }	
+				is_subject = no
+				country_rank >= rank_value:minor_power
+			}
+			save_scope_as = pp_cautious_country
+		}
+		#列强、主要政权、次要政权
+		random_country = {
+			limit = {
+				not = { this = root }
+				not = { has_diplomatic_pact = { who = root type = alliance } }
+				not = { has_diplomatic_pact = { who = root type = defensive_pact } }
+				is_subject = no
+				country_rank = rank_value:great_power
+			}
+			save_scope_as = pp_great_country
+		}
+		random_country = {
+			limit = {
+				not = { this = root }
+				not = { has_diplomatic_pact = { who = root type = alliance } }
+				not = { has_diplomatic_pact = { who = root type = defensive_pact } }
+				is_subject = no
+				country_rank = rank_value:major_power
+			}
+			save_scope_as = pp_major_country
+		}
+		random_country = {
+			limit = {
+				not = { this = root }
+				not = { has_diplomatic_pact = { who = root type = alliance } }
+				not = { has_diplomatic_pact = { who = root type = defensive_pact } }
+				is_subject = no
+				country_rank = rank_value:minor_power
+			}
+			save_scope_as = pp_minor_country
+		}
+
+	}
+
+	option = {	#选项1
+		name = pp_infamy.1.n
+		custom_tooltip = pp_infamy.1.tt
+		trigger = {
+			not = { has_modifier = modifier_positive_propaganda.1 }
+		}
+		#添加修正
+		add_treasury = pp_infamy_gdp_one_per
+		add_modifier = {
+			name = modifier_positive_propaganda.1
+			years = 1
+		}
+		change_infamy = pp_infamy_change_a
+		#改善关系:同盟、共同防御、和善、合作、和解
+		if = {
+			limit =	{
+				exists = scope:pp_alliance_country
+			}
+			change_relations = { 	
+				country = scope:pp_alliance_country
+				value = 5 
+			}
+		}
+		if = {
+			limit =	{
+				exists = scope:pp_defensive_pact_country
+			}
+			change_relations = { 	
+				country = scope:pp_defensive_pact_country
+				value = 5 
+			}
+		}
+		if = {
+			limit =	{
+				exists = scope:pp_genial_country
+			}
+			change_relations = { 	
+				country = scope:pp_genial_country
+				value = 5 
+			}
+		}
+		if = {
+			limit =	{
+				exists = scope:pp_cooperative_country
+			}
+			change_relations = { 	
+				country = scope:pp_cooperative_country
+				value = 5 
+			}
+		}
+		if = {
+			limit =	{
+				exists = scope:pp_conciliator_country
+			}
+			change_relations = { 	
+				country = scope:pp_conciliator_country
+				value = 5
+			}
+		}
+	}
+		
+	option = {	#选项2
+		name = pp_infamy.2.n
+		custom_tooltip = pp_infamy.2.tt
+		trigger = {
+			not = { has_modifier = modifier_positive_propaganda.2 }
+		}
+		add_treasury = pp_infamy_gdp_two_per
+		add_modifier = {
+			name = modifier_positive_propaganda.2
+			years = 1
+		}
+		change_infamy = pp_infamy_change_b
+		#改善关系：同盟、共同防御、和善、合作、保护、忠诚、和解、谨慎
+		if = {
+			limit =	{
+				exists = scope:pp_alliance_country
+			}
+			change_relations = { 	
+				country = scope:pp_alliance_country
+				value = 10 
+			}
+		}
+		if = {
+			limit =	{
+				exists = scope:pp_defensive_pact_country
+			}
+			change_relations = { 	
+				country = scope:pp_defensive_pact_country
+				value = 10 
+			}
+		}
+		if = {
+			limit =	{
+				exists = scope:pp_genial_country
+			}
+			change_relations = { 	
+				country = scope:pp_genial_country
+				value = 10
+			}
+		}
+		if = {
+			limit =	{
+				exists = scope:pp_cooperative_country
+			}
+			change_relations = { 	
+				country = scope:pp_cooperative_country
+				value = 10 
+			}
+		}
+		if = {
+			limit =	{
+				exists = scope:pp_protective_country
+			}
+			change_relations = { 	
+				country = scope:pp_protective_country
+				value = 10
+			}
+		}
+		if = {
+			limit =	{
+				exists = scope:pp_loyal_country
+			}
+			change_relations = { 	
+				country = scope:pp_loyal_country
+				value = 10 
+			}
+		}
+		if = {
+			limit =	{
+				exists = scope:pp_conciliator_country
+			}
+			change_relations = { 	
+				country = scope:pp_conciliator_country
+				value = 10 
+			}
+		}
+		if = {
+			limit =	{
+				exists = scope:pp_cautious_country
+			}
+			change_relations = { 	
+				country = scope:pp_cautious_country
+				value = 10
+			}
+		}
+	}
+
+	option = {	#选项3
+		name = pp_infamy.3.n
+		custom_tooltip = pp_infamy.3.tt
+		trigger = {
+			not = { has_modifier = modifier_positive_propaganda.3 }
+		}
+		add_treasury = pp_infamy_gdp_three_per
+		add_modifier = {
+			name = modifier_positive_propaganda.3
+			years = 1
+		}
+		change_infamy = pp_infamy_change_c
+		#改善关系：同盟、共同防御、列强、主要政权、次要政权
+		if = {
+			limit =	{
+				exists = scope:pp_alliance_country
+			}
+			change_relations = { 	
+				country = scope:pp_alliance_country
+				value = 15 
+			}
+		}
+		if = {
+			limit =	{
+				exists = scope:pp_defensive_pact_country
+			}
+			change_relations = { 	
+				country = scope:pp_defensive_pact_country
+				value = 15
+			}
+		}
+		if = {
+			limit =	{
+				exists = scope:pp_great_country
+			}
+			change_relations = { 	
+				country = scope:pp_great_country
+				value = 15
+			}
+			create_bidirectional_truce = { country = scope:pp_great_country months = 12 } 
+		}
+		if = {
+			limit =	{
+				exists = scope:pp_major_country
+			}
+			change_relations = { 	
+				country = scope:pp_major_country
+				value = 15 
+			}
+			create_bidirectional_truce = { country = scope:pp_major_country months = 12 } 
+		}
+		if = {
+			limit =	{
+				exists = scope:pp_minor_country
+			}
+			change_relations = { 	
+				country = scope:pp_minor_country
+				value = 15
+			}
+			create_bidirectional_truce = { country = scope:pp_minor_country months = 12 } 
+		}
+	}
+	
+	option = {	#取消
+		name = pp_infamy.et
+		custom_tooltip = pp_infamy.et.tt
+		default_option = yes
+	}
+}
+
+
+
