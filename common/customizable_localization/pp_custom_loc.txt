@@ -1,0 +1,25 @@
+customizable_localization = {
+	name = pp_active_tier_desc
+	
+	entry = {
+		text = "pp_tier_1_active_desc"
+		localization_key = pp_tier_1_active_desc
+		trigger = {
+			has_modifier = modifier_positive_propaganda.1
+		}
+	}
+	entry = {
+		text = "pp_tier_2_active_desc"
+		localization_key = pp_tier_2_active_desc
+		trigger = {
+			has_modifier = modifier_positive_propaganda.2
+		}
+	}
+	entry = {
+		text = "pp_tier_3_active_desc"
+		localization_key = pp_tier_3_active_desc
+		trigger = {
+			has_modifier = modifier_positive_propaganda.3
+		}
+	}
+}

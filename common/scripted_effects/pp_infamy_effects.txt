@@ -1,14 +1,39 @@
 pp_process_weekly_appeasement = {
-    if = {
-        limit = { has_modifier = modifier_positive_propaganda.1 }
-        add_government_expenses = { value = pp_cost_tier_1 label = "pp_appeasement_pact" }
-    }
-    else_if = {
-        limit = { has_modifier = modifier_positive_propaganda.2 }
-        add_government_expenses = { value = pp_cost_tier_2 label = "pp_appeasement_pact" }
-    }
-    else_if = {
-        limit = { has_modifier = modifier_positive_propaganda.3 }
-        add_government_expenses = { value = pp_cost_tier_3 label = "pp_appeasement_pact" }
-    }
+	if = {
+		limit = { has_modifier = modifier_positive_propaganda.1 }
+		set_variable = { name = temp_cost value = pp_cost_tier_1 }
+		set_variable = { name = temp_rate value = 0.001 }
+	}
+	else_if = {
+		limit = { has_modifier = modifier_positive_propaganda.2 }
+		set_variable = { name = temp_cost value = pp_cost_tier_2 }
+		set_variable = { name = temp_rate value = 0.003 }
+	}
+	else_if = {
+		limit = { has_modifier = modifier_positive_propaganda.3 }
+		set_variable = { name = temp_cost value = pp_cost_tier_3 }
+		set_variable = { name = temp_rate value = 0.006 }
+	}
+	
+	if = {
+		limit = { exists = var:temp_cost }
+		# Deduct from Player
+		add_treasury = {
+			value = var:temp_cost
+			multiply = -1
+		}
+		
+		# Transfer to AIs
+		every_country = {
+			limit = {
+				NOT = { this = root }
+				country_rank >= rank_value:major_power
+			}
+			# AI receives their share (their_gdp * current_tier_rate)
+			add_treasury = {
+				value = gdp
+				multiply = root.var:temp_rate
+			}
+		}
+	}
 }

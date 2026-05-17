@@ -1,0 +1,14 @@
+je_appeasement_campaign = {
+	title = je_appeasement_campaign_title
+	icon = "gfx/interface/icons/journal_entry_icons/diplomacy.dds"
+	
+	is_shown = {
+		OR = {
+			has_modifier = modifier_positive_propaganda.1
+			has_modifier = modifier_positive_propaganda.2
+			has_modifier = modifier_positive_propaganda.3
+		}
+	}
+	
+	transferable_on_annexation = no
+}
